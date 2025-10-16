@@ -1,0 +1,15 @@
+name: Soma de números
+on: [push]
+jobs:
+  soma:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run a script to add numbers
+        id: soma_script
+        run: |
+          echo "::set-output name=resultado::$(python -c 'print(10 + 20)')"
+      - name: Use the output
+        run: |
+          echo "A soma é ${{ steps.soma_script.outputs.resultado }}"
